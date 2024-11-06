@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace LaminasTest\Diactoros\ServerRequestFilter;
 
 use Laminas\Diactoros\ServerRequestFilter\IPRange;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class IPRangeTest extends TestCase
@@ -35,9 +36,7 @@ class IPRangeTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider IPv4Data
-     */
+    #[DataProvider('IPv4Data')]
     public function testIPv4(bool $result, string $remoteAddr, string $cidr): void
     {
         $this->assertSame($result, IPRange::matchesIPv4($remoteAddr, $cidr));
@@ -68,9 +67,7 @@ class IPRangeTest extends TestCase
         // @codingStandardsIgnoreEnd
     }
 
-    /**
-     * @dataProvider IPv6Data
-     */
+    #[DataProvider('IPv6Data')]
     public function testIPv6(bool $result, string $remoteAddr, string $cidr): void
     {
         $this->assertSame($result, IPRange::matchesIPv6($remoteAddr, $cidr));
@@ -96,7 +93,7 @@ class IPRangeTest extends TestCase
         }
     }
 
-    /** @dataProvider combinedData */
+    #[DataProvider('combinedData')]
     public function testCombinedIPv4AndIPv6Pool(bool $result, string $remoteAddr, string $cidr): void
     {
         $this->assertSame($result, IPRange::matches($remoteAddr, $cidr));

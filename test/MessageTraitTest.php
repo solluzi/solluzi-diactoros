@@ -6,6 +6,8 @@ namespace LaminasTest\Diactoros;
 
 use InvalidArgumentException;
 use Laminas\Diactoros\Request;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\MessageInterface;
 use Psr\Http\Message\StreamInterface;
@@ -45,7 +47,7 @@ class MessageTraitTest extends TestCase
         ];
     }
 
-    /** @dataProvider invalidProtocolVersionProvider */
+    #[DataProvider('invalidProtocolVersionProvider')]
     public function testWithProtocolVersionRaisesExceptionForInvalidVersion(string $version): void
     {
         $request = new Request();
@@ -64,9 +66,7 @@ class MessageTraitTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider validProtocolVersionProvider
-     */
+    #[DataProvider('validProtocolVersionProvider')]
     public function testWithProtocolVersionDoesntRaiseExceptionForValidVersion(string $version): void
     {
         $request = (new Request())->withProtocolVersion($version);
@@ -180,9 +180,7 @@ class MessageTraitTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidGeneralHeaderValues
-     */
+    #[DataProvider('invalidGeneralHeaderValues')]
     public function testWithHeaderRaisesExceptionForInvalidNestedHeaderValue(mixed $value): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -203,9 +201,7 @@ class MessageTraitTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidHeaderValues
-     */
+    #[DataProvider('invalidHeaderValues')]
     public function testWithHeaderRaisesExceptionForInvalidValueType(mixed $value): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -223,9 +219,7 @@ class MessageTraitTest extends TestCase
         $this->assertSame(['X-foo' => ['bar']], $new->getHeaders());
     }
 
-    /**
-     * @dataProvider invalidGeneralHeaderValues
-     */
+    #[DataProvider('invalidGeneralHeaderValues')]
     public function testWithAddedHeaderRaisesExceptionForNonStringNonArrayValue(mixed $value): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -283,11 +277,11 @@ class MessageTraitTest extends TestCase
     }
 
     /**
-     * @dataProvider headersWithInjectionVectors
-     * @group ZF2015-04
      * @param string               $name
      * @param string|array{string} $value
      */
+    #[DataProvider('headersWithInjectionVectors')]
+    #[Group('ZF2015-04')]
     public function testDoesNotAllowCRLFInjectionWhenCallingWithHeader($name, $value): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -296,11 +290,11 @@ class MessageTraitTest extends TestCase
     }
 
     /**
-     * @dataProvider headersWithInjectionVectors
-     * @group ZF2015-04
      * @param string               $name
      * @param string|array{string} $value
      */
+    #[DataProvider('headersWithInjectionVectors')]
+    #[Group('ZF2015-04')]
     public function testDoesNotAllowCRLFInjectionWhenCallingWithAddedHeader($name, $value): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -332,9 +326,7 @@ class MessageTraitTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider headersWithWhitespace
-     */
+    #[DataProvider('headersWithWhitespace')]
     public function testWithHeaderTrimsWhitespace(string $value): void
     {
         $message = $this->message->withHeader('X-Foo-Bar', $value);
@@ -350,9 +342,7 @@ class MessageTraitTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider headersWithContinuation
-     */
+    #[DataProvider('headersWithContinuation')]
     public function testWithHeaderNormalizesContinuationToNotContainNewlines(string $value): void
     {
         $message = $this->message->withHeader('X-Foo-Bar', $value);
@@ -373,12 +363,12 @@ class MessageTraitTest extends TestCase
     }
 
     /**
-     * @dataProvider numericHeaderValuesProvider
-     * @group 99
      * @psalm-suppress InvalidArgument this test
      *     explicitly verifies that pre-type-declaration implicit type
      *     conversion semantics still apply, for BC Compliance
      */
+    #[DataProvider('numericHeaderValuesProvider')]
+    #[Group('99')]
     public function testWithHeaderShouldAllowIntegersAndFloats(float $value): void
     {
         $message = $this->message
@@ -410,10 +400,8 @@ class MessageTraitTest extends TestCase
         return $values;
     }
 
-    /**
-     * @dataProvider invalidArrayHeaderValues
-     * @group 99
-     */
+    #[DataProvider('invalidArrayHeaderValues')]
+    #[Group('99')]
     public function testWithHeaderShouldRaiseExceptionForInvalidHeaderValuesInArrays(mixed $value): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -423,10 +411,8 @@ class MessageTraitTest extends TestCase
         $this->message->withHeader('X-Test-Array', [$value]);
     }
 
-    /**
-     * @dataProvider invalidHeaderValueTypes
-     * @group 99
-     */
+    #[DataProvider('invalidHeaderValueTypes')]
+    #[Group('99')]
     public function testWithHeaderShouldRaiseExceptionForInvalidHeaderScalarValues(mixed $value): void
     {
         $this->expectException(InvalidArgumentException::class);

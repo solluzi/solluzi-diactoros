@@ -6,14 +6,13 @@ namespace LaminasTest\Diactoros;
 
 use Laminas\Diactoros\RelativeStream;
 use Laminas\Diactoros\Stream;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
 use const SEEK_SET;
 
-/**
- * @covers \Laminas\Diactoros\RelativeStream
- */
+#[CoversClass(RelativeStream::class)]
 class RelativeStreamTest extends TestCase
 {
     public function testToString(): void

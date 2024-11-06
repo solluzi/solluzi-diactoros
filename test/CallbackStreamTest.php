@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace LaminasTest\Diactoros;
 
 use Laminas\Diactoros\CallbackStream;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;
 
-/**
- * @covers \Laminas\Diactoros\CallbackStream
- */
+#[CoversClass(CallbackStream::class)]
 final class CallbackStreamTest extends TestCase
 {
     public function testToString(): void
@@ -188,10 +188,10 @@ final class CallbackStreamTest extends TestCase
     }
 
     /**
-     * @dataProvider phpCallbacksForStreams
      * @param callable(): string $callback
      * @param non-empty-string $expected
      */
+    #[DataProvider('phpCallbacksForStreams')]
     public function testAllowsArbitraryPhpCallbacks(callable $callback, string $expected): void
     {
         $stream   = new CallbackStream($callback);

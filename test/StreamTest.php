@@ -10,6 +10,7 @@ use InvalidArgumentException;
 use Laminas\Diactoros\Exception\InvalidArgumentException as DiactorosInvalidArgumentException;
 use Laminas\Diactoros\Stream;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use ReflectionProperty;
 use RuntimeException;
@@ -169,9 +170,7 @@ final class StreamTest extends TestCase
         $this->assertSame($resource, $detached);
     }
 
-    /**
-     * @group 42
-     */
+    #[Group('42')]
     public function testSizeReportsNullWhenNoResourcePresent(): void
     {
         $this->stream->detach();
@@ -629,9 +628,7 @@ final class StreamTest extends TestCase
         $this->assertNull($this->stream->getMetadata('TOTALLY_MADE_UP'));
     }
 
-    /**
-     * @group 42
-     */
+    #[Group('42')]
     public function testGetSizeReturnsStreamSize(): void
     {
         $resource = fopen(__FILE__, 'r');
@@ -640,9 +637,7 @@ final class StreamTest extends TestCase
         $this->assertSame($expected['size'], $stream->getSize());
     }
 
-    /**
-     * @group 67
-     */
+    #[Group('67')]
     public function testRaisesExceptionOnConstructionForNonStreamResources(): void
     {
         $resource = $this->getResourceFor67();
@@ -656,9 +651,7 @@ final class StreamTest extends TestCase
         new Stream($resource);
     }
 
-    /**
-     * @group 67
-     */
+    #[Group('67')]
     public function testRaisesExceptionOnAttachForNonStreamResources(): void
     {
         $resource = $this->getResourceFor67();
@@ -709,9 +702,7 @@ final class StreamTest extends TestCase
         $this->assertSame('FOO BAR', $stream->__toString());
     }
 
-    /**
-     * @group 42
-     */
+    #[Group('42')]
     public function testSizeReportsNullForPhpInputStreams(): void
     {
         $resource = fopen('php://input', 'r');

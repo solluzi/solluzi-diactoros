@@ -6,6 +6,8 @@ namespace LaminasTest\Diactoros;
 
 use InvalidArgumentException;
 use Laminas\Diactoros\Uri;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use ReflectionObject;
 
@@ -95,11 +97,11 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider userInfoProvider
      * @param non-empty-string $user
      * @param non-empty-string $credential
      * @param non-empty-string $expected
      */
+    #[DataProvider('userInfoProvider')]
     public function testWithUserInfoEncodesUsernameAndPassword(string $user, string $credential, string $expected): void
     {
         $uri = new Uri('https://user:pass@local.example.com:3001/foo?bar=baz#quz');
@@ -136,9 +138,9 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider validPorts
      * @param null|positive-int|numeric-string $port
      */
+    #[DataProvider('validPorts')]
     public function testWithPortReturnsNewInstanceWithProvidedPort($port): void
     {
         $uri = new Uri('https://user:pass@local.example.com:3001/foo?bar=baz#quz');
@@ -170,9 +172,7 @@ class UriTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidPorts
-     */
+    #[DataProvider('invalidPorts')]
     public function testWithPortRaisesExceptionForInvalidPorts(mixed $port): void
     {
         $uri = new Uri('https://user:pass@local.example.com:3001/foo?bar=baz#quz');
@@ -211,9 +211,7 @@ class UriTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidPaths
-     */
+    #[DataProvider('invalidPaths')]
     public function testWithPathRaisesExceptionForInvalidPaths(mixed $path): void
     {
         $uri = new Uri('https://user:pass@local.example.com:3001/foo?bar=baz#quz');
@@ -242,9 +240,7 @@ class UriTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidQueryStrings
-     */
+    #[DataProvider('invalidQueryStrings')]
     public function testWithQueryRaisesExceptionForInvalidQueryStrings(mixed $query): void
     {
         $uri = new Uri('https://user:pass@local.example.com:3001/foo?bar=baz#quz');
@@ -286,10 +282,10 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider authorityInfo
      * @param non-empty-string $url
      * @param non-empty-string $expected
      */
+    #[DataProvider('authorityInfo')]
     public function testRetrievingAuthorityReturnsExpectedValues(string $url, string $expected): void
     {
         $uri = new Uri($url);
@@ -362,9 +358,9 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidSchemes
      * @param non-empty-string $scheme
      */
+    #[DataProvider('invalidSchemes')]
     public function testConstructWithUnsupportedSchemeRaisesAnException(string $scheme): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -374,9 +370,9 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidSchemes
      * @param non-empty-string $scheme
      */
+    #[DataProvider('invalidSchemes')]
     public function testMutatingWithUnsupportedSchemeRaisesAnException(string $scheme): void
     {
         $uri = new Uri('http://example.com');
@@ -425,10 +421,10 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider standardSchemePortCombinations
      * @param non-empty-string $scheme
      * @param positive-int $port
      */
+    #[DataProvider('standardSchemePortCombinations')]
     public function testAuthorityOmitsPortForStandardSchemePortCombinations(string $scheme, int $port): void
     {
         $uri = (new Uri())
@@ -453,10 +449,10 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider mutations
      * @param 'withScheme'|'withUserInfo'|'withHost'|'withPort'|'withPath'|'withQuery'|'withFragment' $method
      * @param non-empty-string|positive-int $value
      */
+    #[DataProvider('mutations')]
     public function testMutationResetsUriStringPropertyInClone(string $method, $value): void
     {
         $uri    = new Uri('http://example.com/path?query=string#fragment');
@@ -474,9 +470,7 @@ class UriTest extends TestCase
         $this->assertSame($string, $p->getValue($uri));
     }
 
-    /**
-     * @group 40
-     */
+    #[Group('40')]
     public function testPathIsProperlyEncoded(): void
     {
         $uri      = (new Uri())->withPath('/foo^bar');
@@ -504,10 +498,10 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider queryStringsForEncoding
      * @param non-empty-string $query
      * @param non-empty-string $expected
      */
+    #[DataProvider('queryStringsForEncoding')]
     public function testQueryIsProperlyEncoded(string $query, string $expected): void
     {
         $uri = (new Uri())->withQuery($query);
@@ -515,19 +509,17 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider queryStringsForEncoding
      * @param non-empty-string $query
      * @param non-empty-string $expected
      */
+    #[DataProvider('queryStringsForEncoding')]
     public function testQueryIsNotDoubleEncoded(string $query, string $expected): void
     {
         $uri = (new Uri())->withQuery($expected);
         $this->assertSame($expected, $uri->getQuery());
     }
 
-    /**
-     * @group 40
-     */
+    #[Group('40')]
     public function testFragmentIsProperlyEncoded(): void
     {
         $uri      = (new Uri())->withFragment('/p^th?key^=`bar#b@z');
@@ -535,9 +527,7 @@ class UriTest extends TestCase
         $this->assertSame($expected, $uri->getFragment());
     }
 
-    /**
-     * @group 40
-     */
+    #[Group('40')]
     public function testFragmentIsNotDoubleEncoded(): void
     {
         $expected = '/p%5Eth?key%5E=%60bar%23b@z';
@@ -553,10 +543,10 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider utf8PathsDataProvider
      * @param non-empty-string $url
      * @param non-empty-string $result
      */
+    #[DataProvider('utf8PathsDataProvider')]
     public function testUtf8Path(string $url, string $result): void
     {
         $uri = new Uri($url);
@@ -576,10 +566,10 @@ class UriTest extends TestCase
     }
 
     /**
-     * @dataProvider utf8QueryStringsDataProvider
      * @param non-empty-string $url
      * @param non-empty-string $result
      */
+    #[DataProvider('utf8QueryStringsDataProvider')]
     public function testUtf8Query(string $url, string $result): void
     {
         $uri = new Uri($url);

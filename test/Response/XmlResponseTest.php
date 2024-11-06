@@ -6,6 +6,8 @@ namespace LaminasTest\Diactoros\Response;
 
 use InvalidArgumentException;
 use Laminas\Diactoros\Response\XmlResponse;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
 
@@ -70,9 +72,7 @@ class XmlResponseTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidContent
-     */
+    #[DataProvider('invalidContent')]
     public function testRaisesExceptionforNonStringNonStreamBodyContent(mixed $body): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -81,9 +81,7 @@ class XmlResponseTest extends TestCase
         new XmlResponse($body);
     }
 
-    /**
-     * @group 115
-     */
+    #[Group('115')]
     public function testConstructorRewindsBodyStream(): void
     {
         $body     = '<?xml version="1.0"?>' . PHP_EOL . '<something>Valid XML</something>';

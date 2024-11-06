@@ -8,6 +8,7 @@ use Laminas\Diactoros\Exception\InvalidForwardedHeaderNameException;
 use Laminas\Diactoros\Exception\InvalidProxyAddressException;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class FilterUsingXForwardedHeadersTest extends TestCase
@@ -97,7 +98,7 @@ class FilterUsingXForwardedHeadersTest extends TestCase
         yield 'private-class-c-subnet' => ['192.168.1.1'];
     }
 
-    /** @dataProvider trustedProxyList */
+    #[DataProvider('trustedProxyList')]
     public function testTrustingProxyListWithoutExplicitTrustedHeadersTrustsAllForwardedRequestsForTrustedProxies(
         string $remoteAddr
     ): void {
@@ -125,7 +126,7 @@ class FilterUsingXForwardedHeadersTest extends TestCase
         $this->assertSame('https', $filteredUri->getScheme());
     }
 
-    /** @dataProvider trustedProxyList */
+    #[DataProvider('trustedProxyList')]
     public function testTrustingProxyListWithSpecificTrustedHeadersTrustsOnlyThoseHeaders(string $remoteAddr): void
     {
         $request = new ServerRequest(
@@ -162,7 +163,7 @@ class FilterUsingXForwardedHeadersTest extends TestCase
         yield 'private-class-c-subnet' => ['192.168.168.1'];
     }
 
-    /** @dataProvider untrustedProxyList */
+    #[DataProvider('untrustedProxyList')]
     public function testFilterDoesNothingWhenAddressNotInTrustedProxyList(string $remoteAddr): void
     {
         $request = new ServerRequest(
@@ -268,7 +269,7 @@ class FilterUsingXForwardedHeadersTest extends TestCase
         yield 'ipv6-local-link' => ['fe80:0000:0000:0000:abcd:abcd:abcd:abcd'];
     }
 
-    /** @dataProvider trustedReservedNetworkList */
+    #[DataProvider('trustedReservedNetworkList')]
     public function testTrustReservedSubnetsProducesFilterThatAcceptsAddressesFromThoseSubnets(
         string $remoteAddr
     ): void {
@@ -308,7 +309,7 @@ class FilterUsingXForwardedHeadersTest extends TestCase
         yield 'ipv6-not-local-link' => ['ef80:0000:0000:0000:abcd:abcd:abcd:abcd'];
     }
 
-    /** @dataProvider unreservedNetworkAddressList */
+    #[DataProvider('unreservedNetworkAddressList')]
     public function testTrustReservedSubnetsProducesFilterThatRejectsAddressesNotFromThoseSubnets(
         string $remoteAddr
     ): void {
@@ -345,7 +346,7 @@ class FilterUsingXForwardedHeadersTest extends TestCase
         yield 'empty'            => ['', 'http'];
     }
 
-    /** @dataProvider xForwardedProtoValues */
+    #[DataProvider('xForwardedProtoValues')]
     public function testOnlyHonorsXForwardedProtoIfValueResolvesToHTTPS(
         string $xForwarededProto,
         string $expectedScheme

@@ -6,6 +6,7 @@ namespace LaminasTest\Diactoros\Response;
 
 use InvalidArgumentException;
 use Laminas\Diactoros\Response\HtmlResponse;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
 
@@ -68,9 +69,7 @@ class HtmlResponseTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidHtmlContent
-     */
+    #[DataProvider('invalidHtmlContent')]
     public function testRaisesExceptionForNonStringNonStreamBodyContent(mixed $body): void
     {
         $this->expectException(InvalidArgumentException::class);

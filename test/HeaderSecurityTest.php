@@ -6,6 +6,8 @@ namespace LaminasTest\Diactoros;
 
 use InvalidArgumentException;
 use Laminas\Diactoros\HeaderSecurity;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 final class HeaderSecurityTest extends TestCase
@@ -34,11 +36,11 @@ final class HeaderSecurityTest extends TestCase
     }
 
     /**
-     * @dataProvider getFilterValues
-     * @group ZF2015-04
      * @param non-empty-string $value
      * @param non-empty-string $expected
      */
+    #[DataProvider('getFilterValues')]
+    #[Group('ZF2015-04')]
     public function testFiltersValuesPerRfc7230(string $value, string $expected): void
     {
         $this->assertSame($expected, HeaderSecurity::filter($value));
@@ -67,10 +69,10 @@ final class HeaderSecurityTest extends TestCase
     }
 
     /**
-     * @dataProvider validateValues
-     * @group ZF2015-04
      * @param non-empty-string $value
      */
+    #[DataProvider('validateValues')]
+    #[Group('ZF2015-04')]
     public function testValidatesValuesPerRfc7230(string $value, bool $expected): void
     {
         self::assertSame($expected, HeaderSecurity::isValid($value));
@@ -95,10 +97,10 @@ final class HeaderSecurityTest extends TestCase
     }
 
     /**
-     * @dataProvider assertValues
-     * @group ZF2015-04
      * @param non-empty-string $value
      */
+    #[DataProvider('assertValues')]
+    #[Group('ZF2015-04')]
     public function testAssertValidRaisesExceptionForInvalidValue(string $value): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -121,9 +123,9 @@ final class HeaderSecurityTest extends TestCase
     }
 
     /**
-     * @dataProvider assertNames
      * @param non-empty-string $value
      */
+    #[DataProvider('assertNames')]
     public function testAssertValidNameRaisesExceptionForInvalidName(string $value): void
     {
         $this->expectException(InvalidArgumentException::class);
