@@ -177,7 +177,7 @@ class SerializerTest extends TestCase
      * @param non-empty-string $requestTarget
      * @param array{getScheme?: non-empty-string, getUserInfo?: non-empty-string, getHost?: non-empty-string, getPort?: positive-int, getPath?: non-empty-string, getQuery?: non-empty-string} $expectations
      */
-    #[\PHPUnit\Framework\Attributes\DataProvider('absoluteForms')]
+    #[DataProvider('absoluteForms')]
     public function testCanDeserializeRequestWithAbsoluteForm(
         string $line,
         string $requestTarget,
