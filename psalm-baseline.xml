@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="5.26.0@4787eaf414e16c661902b94dfe5d882223e5b513">
+<files psalm-version="5.26.1@d747f6500b38ac4f7dfc5edbcae6e4b637d7add0">
   <file src="src/AbstractSerializer.php">
     <RedundantCondition>
       <code><![CDATA[! $crFound]]></code>
@@ -317,11 +317,33 @@
       <code><![CDATA[$ret]]></code>
       <code><![CDATA[$ret]]></code>
     </MixedAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[phpCallbacksForStreams]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/HeaderSecurityTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[assertNames]]></code>
+      <code><![CDATA[assertValues]]></code>
+      <code><![CDATA[getFilterValues]]></code>
+      <code><![CDATA[validateValues]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/MessageTraitTest.php">
     <MixedArgument>
       <code><![CDATA[$value]]></code>
     </MixedArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[headersWithContinuation]]></code>
+      <code><![CDATA[headersWithInjectionVectors]]></code>
+      <code><![CDATA[headersWithWhitespace]]></code>
+      <code><![CDATA[invalidArrayHeaderValues]]></code>
+      <code><![CDATA[invalidGeneralHeaderValues]]></code>
+      <code><![CDATA[invalidHeaderValues]]></code>
+      <code><![CDATA[invalidProtocolVersionProvider]]></code>
+      <code><![CDATA[numericHeaderValuesProvider]]></code>
+      <code><![CDATA[validProtocolVersionProvider]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/RelativeStreamTest.php">
     <DocblockTypeContradiction>
@@ -341,11 +363,63 @@
     <MixedOperand>
       <code><![CDATA[$i]]></code>
     </MixedOperand>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[absoluteForms]]></code>
+      <code><![CDATA[headersWithContinuationLines]]></code>
+      <code><![CDATA[headersWithWhitespace]]></code>
+      <code><![CDATA[invalidRequestLines]]></code>
+      <code><![CDATA[messagesWithInvalidHeaders]]></code>
+      <code><![CDATA[originForms]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/RequestTest.php">
     <MixedArgument>
       <code><![CDATA[$headers]]></code>
     </MixedArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[customRequestMethods]]></code>
+      <code><![CDATA[headersWithInjectionVectors]]></code>
+      <code><![CDATA[hostHeaderKeys]]></code>
+      <code><![CDATA[invalidHeaderTypes]]></code>
+      <code><![CDATA[invalidMethod]]></code>
+      <code><![CDATA[invalidRequestBody]]></code>
+      <code><![CDATA[invalidRequestMethod]]></code>
+      <code><![CDATA[requestsWithUri]]></code>
+      <code><![CDATA[validRequestTargets]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Response/HtmlResponseTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[invalidHtmlContent]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Response/JsonResponseTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[scalarValuesForJSON]]></code>
+      <code><![CDATA[valuesToJsonEncode]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Response/RedirectResponseTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[invalidUris]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Response/SerializerTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[headersWithContinuationLines]]></code>
+      <code><![CDATA[headersWithWhitespace]]></code>
+      <code><![CDATA[messagesWithInvalidHeaders]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Response/TextResponseTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[invalidContent]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/Response/XmlResponseTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[invalidContent]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/ResponseTest.php">
     <MixedArgumentTypeCoercion>
@@ -355,6 +429,14 @@
     <MixedAssignment>
       <code><![CDATA[$responseCode]]></code>
     </MixedAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[headersWithInjectionVectors]]></code>
+      <code><![CDATA[ianaCodesReasonPhrasesProvider]]></code>
+      <code><![CDATA[invalidHeaderTypes]]></code>
+      <code><![CDATA[invalidResponseBody]]></code>
+      <code><![CDATA[invalidStatusCodes]]></code>
+      <code><![CDATA[validStatusCodes]]></code>
+    </PossiblyUnusedMethod>
     <StringIncrement>
       <code><![CDATA[$value]]></code>
     </StringIncrement>
@@ -363,11 +445,34 @@
     <InvalidArgument>
       <code><![CDATA[$normalizedFiles['fooFiles']]]></code>
     </InvalidArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[cookieHeaderValues]]></code>
+      <code><![CDATA[invalidHostHeaders]]></code>
+      <code><![CDATA[marshalProtocolVersionProvider]]></code>
+      <code><![CDATA[serverContentMap]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/ServerRequestFilter/FilterUsingXForwardedHeadersTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[trustedProxyList]]></code>
+      <code><![CDATA[trustedReservedNetworkList]]></code>
+      <code><![CDATA[unreservedNetworkAddressList]]></code>
+      <code><![CDATA[untrustedProxyList]]></code>
+      <code><![CDATA[xForwardedProtoValues]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/ServerRequestFilter/IPRangeTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[combinedData]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/ServerRequestTest.php">
     <InvalidArgument>
       <code><![CDATA[$parsedBody]]></code>
     </InvalidArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[provideMethods]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/StaticAnalysis/RequestInterfaceStaticReturnTypes.php">
     <UnusedClass>
@@ -398,6 +503,18 @@
       <code><![CDATA[$path]]></code>
       <code><![CDATA[$streamOrFile]]></code>
     </MixedArgument>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[errorConstantsAndMessages]]></code>
+      <code><![CDATA[invalidErrorStatuses]]></code>
+      <code><![CDATA[invalidMovePaths]]></code>
+      <code><![CDATA[invalidStreams]]></code>
+      <code><![CDATA[nonOkErrorStatus]]></code>
+    </PossiblyUnusedMethod>
+  </file>
+  <file src="test/UriFactoryTest.php">
+    <PossiblyUnusedMethod>
+      <code><![CDATA[httpsDisableParamProvider]]></code>
+    </PossiblyUnusedMethod>
   </file>
   <file src="test/UriTest.php">
     <MixedArgument>
@@ -406,6 +523,20 @@
     <MixedAssignment>
       <code><![CDATA[$test]]></code>
     </MixedAssignment>
+    <PossiblyUnusedMethod>
+      <code><![CDATA[authorityInfo]]></code>
+      <code><![CDATA[invalidPaths]]></code>
+      <code><![CDATA[invalidPorts]]></code>
+      <code><![CDATA[invalidQueryStrings]]></code>
+      <code><![CDATA[invalidSchemes]]></code>
+      <code><![CDATA[mutations]]></code>
+      <code><![CDATA[queryStringsForEncoding]]></code>
+      <code><![CDATA[standardSchemePortCombinations]]></code>
+      <code><![CDATA[userInfoProvider]]></code>
+      <code><![CDATA[utf8PathsDataProvider]]></code>
+      <code><![CDATA[utf8QueryStringsDataProvider]]></code>
+      <code><![CDATA[validPorts]]></code>
+    </PossiblyUnusedMethod>
     <PossiblyUnusedParam>
       <code><![CDATA[$query]]></code>
     </PossiblyUnusedParam>

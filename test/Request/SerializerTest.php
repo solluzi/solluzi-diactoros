@@ -10,6 +10,7 @@ use Laminas\Diactoros\Request;
 use Laminas\Diactoros\Request\Serializer;
 use Laminas\Diactoros\Stream;
 use Laminas\Diactoros\Uri;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
@@ -83,11 +84,11 @@ class SerializerTest extends TestCase
     }
 
     /**
-     * @dataProvider originForms
      * @param non-empty-string                          $line
      * @param non-empty-string                          $requestTarget
      * @param array<non-empty-string, non-empty-string> $expectations
      */
+    #[DataProvider('originForms')]
     public function testCanDeserializeRequestWithOriginForm(
         string $line,
         string $requestTarget,
@@ -172,11 +173,11 @@ class SerializerTest extends TestCase
 
     // @codingStandardsIgnoreStart if we split these line, phpcs can't associate parameter name and docblock anymore (phpcs limitation)
     /**
-     * @dataProvider absoluteForms
      * @param non-empty-string $line
      * @param non-empty-string $requestTarget
      * @param array{getScheme?: non-empty-string, getUserInfo?: non-empty-string, getHost?: non-empty-string, getPort?: positive-int, getPath?: non-empty-string, getQuery?: non-empty-string} $expectations
      */
+    #[\PHPUnit\Framework\Attributes\DataProvider('absoluteForms')]
     public function testCanDeserializeRequestWithAbsoluteForm(
         string $line,
         string $requestTarget,
@@ -234,9 +235,9 @@ class SerializerTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidRequestLines
      * @param non-empty-string $line
      */
+    #[DataProvider('invalidRequestLines')]
     public function testRaisesExceptionDuringDeserializationForInvalidRequestLine(string $line): void
     {
         $message = $line . "\r\nX-Foo-Bar: Baz\r\n\r\nContent";
@@ -269,9 +270,9 @@ class SerializerTest extends TestCase
     }
 
     /**
-     * @dataProvider headersWithContinuationLines
      * @param non-empty-string $text
      */
+    #[DataProvider('headersWithContinuationLines')]
     public function testCanDeserializeRequestWithHeaderContinuations(string $text): void
     {
         $request = Serializer::fromString($text);
@@ -295,9 +296,7 @@ class SerializerTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider headersWithWhitespace
-     */
+    #[DataProvider('headersWithWhitespace')]
     public function testDeserializationRemovesWhitespaceAroundValues(string $text): void
     {
         $request = Serializer::fromString($text);
@@ -327,10 +326,10 @@ class SerializerTest extends TestCase
     }
 
     /**
-     * @dataProvider messagesWithInvalidHeaders
      * @param non-empty-string $message
      * @param non-empty-string $exceptionMessage
      */
+    #[DataProvider('messagesWithInvalidHeaders')]
     public function testDeserializationRaisesExceptionForMalformedHeaders(
         string $message,
         string $exceptionMessage

@@ -7,6 +7,7 @@ namespace LaminasTest\Diactoros\Response;
 use InvalidArgumentException;
 use Laminas\Diactoros\Response\RedirectResponse;
 use Laminas\Diactoros\Uri;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 class RedirectResponseTest extends TestCase
@@ -62,9 +63,7 @@ class RedirectResponseTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidUris
-     */
+    #[DataProvider('invalidUris')]
     public function testConstructorRaisesExceptionOnInvalidUri(mixed $uri): void
     {
         $this->expectException(InvalidArgumentException::class);

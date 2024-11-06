@@ -6,6 +6,7 @@ namespace LaminasTest\Diactoros\Response;
 
 use InvalidArgumentException;
 use Laminas\Diactoros\Response\JsonResponse;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 
@@ -57,9 +58,7 @@ class JsonResponseTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider scalarValuesForJSON
-     */
+    #[DataProvider('scalarValuesForJSON')]
     public function testScalarValuePassedToConstructorJsonEncodesDirectly(mixed $value): void
     {
         $response = new JsonResponse($value);
@@ -131,10 +130,10 @@ class JsonResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider valuesToJsonEncode
      * @param non-empty-string $value
      * @param non-empty-string $key
      */
+    #[DataProvider('valuesToJsonEncode')]
     public function testUsesSaneDefaultJsonEncodingFlags(string $value, string $key): void
     {
         $defaultFlags = JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP | JSON_UNESCAPED_SLASHES;

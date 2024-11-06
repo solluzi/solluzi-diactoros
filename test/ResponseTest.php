@@ -9,6 +9,8 @@ use DOMXPath;
 use InvalidArgumentException;
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\Stream;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 
 use function curl_close;
@@ -168,9 +170,9 @@ final class ResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider ianaCodesReasonPhrasesProvider
      * @param non-empty-string $reasonPhrase
      */
+    #[DataProvider('ianaCodesReasonPhrasesProvider')]
     public function testReasonPhraseDefaultsAgainstIana(int $code, string $reasonPhrase): void
     {
         $response = $this->response->withStatus($code);
@@ -205,9 +207,7 @@ final class ResponseTest extends TestCase
         $this->assertSame($headers, $response->getHeaders());
     }
 
-    /**
-     * @dataProvider validStatusCodes
-     */
+    #[DataProvider('validStatusCodes')]
     public function testCreateWithValidStatusCodes(int $code): void
     {
         $response = $this->response->withStatus($code);
@@ -227,9 +227,7 @@ final class ResponseTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidStatusCodes
-     */
+    #[DataProvider('invalidStatusCodes')]
     public function testCannotSetInvalidStatusCode(mixed $code): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -260,9 +258,7 @@ final class ResponseTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidResponseBody
-     */
+    #[DataProvider('invalidResponseBody')]
     public function testConstructorRaisesExceptionForInvalidBody(mixed $body): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -285,11 +281,11 @@ final class ResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider invalidHeaderTypes
-     * @group 99
      * @param array<mixed> $headers
      * @param non-empty-string $contains
      */
+    #[DataProvider('invalidHeaderTypes')]
+    #[Group('99')]
     public function testConstructorRaisesExceptionForInvalidHeaders(
         array $headers,
         string $contains = 'header value type'
@@ -327,9 +323,9 @@ final class ResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider headersWithInjectionVectors
      * @param string|non-empty-list<non-empty-string> $value
      */
+    #[DataProvider('headersWithInjectionVectors')]
     public function testConstructorRaisesExceptionForHeadersWithCRLFVectors(string $name, $value): void
     {
         $this->expectException(InvalidArgumentException::class);

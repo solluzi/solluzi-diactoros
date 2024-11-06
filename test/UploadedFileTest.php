@@ -7,6 +7,8 @@ namespace LaminasTest\Diactoros;
 use InvalidArgumentException;
 use Laminas\Diactoros\Stream;
 use Laminas\Diactoros\UploadedFile;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use ReflectionProperty;
 use RuntimeException;
@@ -74,9 +76,7 @@ final class UploadedFileTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidStreams
-     */
+    #[DataProvider('invalidStreams')]
     public function testRaisesExceptionOnInvalidStreamOrFile(mixed $streamOrFile): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -100,9 +100,7 @@ final class UploadedFileTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidErrorStatuses
-     */
+    #[DataProvider('invalidErrorStatuses')]
     public function testRaisesExceptionOnInvalidErrorStatus(int $status): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -175,9 +173,7 @@ final class UploadedFileTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidMovePaths
-     */
+    #[DataProvider('invalidMovePaths')]
     public function testMoveRaisesExceptionForInvalidPath(mixed $path): void
     {
         $stream = new Stream('php://temp', 'wb+');
@@ -238,20 +234,16 @@ final class UploadedFileTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider nonOkErrorStatus
-     * @group 60
-     */
+    #[DataProvider('nonOkErrorStatus')]
+    #[Group('60')]
     public function testConstructorDoesNotRaiseExceptionForInvalidStreamWhenErrorStatusPresent(int $status): void
     {
         $uploadedFile = new UploadedFile('not ok', 0, $status);
         $this->assertSame($status, $uploadedFile->getError());
     }
 
-    /**
-     * @dataProvider nonOkErrorStatus
-     * @group 60
-     */
+    #[DataProvider('nonOkErrorStatus')]
+    #[Group('60')]
     public function testMoveToRaisesExceptionWhenErrorStatusPresent(int $status): void
     {
         $uploadedFile = new UploadedFile('not ok', 0, $status);
@@ -262,10 +254,8 @@ final class UploadedFileTest extends TestCase
         $uploadedFile->moveTo(__DIR__ . '/' . uniqid());
     }
 
-    /**
-     * @dataProvider nonOkErrorStatus
-     * @group 60
-     */
+    #[DataProvider('nonOkErrorStatus')]
+    #[Group('60')]
     public function testGetStreamRaisesExceptionWhenErrorStatusPresent(int $status): void
     {
         $uploadedFile = new UploadedFile('not ok', 0, $status);
@@ -276,9 +266,7 @@ final class UploadedFileTest extends TestCase
         $uploadedFile->getStream();
     }
 
-    /**
-     * @group 82
-     */
+    #[Group('82')]
     public function testMoveToCreatesStreamIfOnlyAFilenameWasProvided(): void
     {
         $this->orgFile = tempnam(sys_get_temp_dir(), 'ORG');
@@ -306,7 +294,7 @@ final class UploadedFileTest extends TestCase
         }
     }
 
-    /** @dataProvider errorConstantsAndMessages */
+    #[DataProvider('errorConstantsAndMessages')]
     public function testGetStreamRaisesExceptionWithAppropriateMessageWhenUploadErrorDetected(
         int $constant,
         string $message
@@ -317,9 +305,7 @@ final class UploadedFileTest extends TestCase
         $uploadedFile->getStream();
     }
 
-    /**
-     * @dataProvider errorConstantsAndMessages
-     */
+    #[DataProvider('errorConstantsAndMessages')]
     public function testMoveToRaisesExceptionWithAppropriateMessageWhenUploadErrorDetected(
         int $constant,
         string $message

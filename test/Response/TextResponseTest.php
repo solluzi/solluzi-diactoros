@@ -6,6 +6,8 @@ namespace LaminasTest\Diactoros\Response;
 
 use InvalidArgumentException;
 use Laminas\Diactoros\Response\TextResponse;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
 
@@ -68,9 +70,7 @@ class TextResponseTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidContent
-     */
+    #[DataProvider('invalidContent')]
     public function testRaisesExceptionForNonStringNonStreamBodyContent(mixed $body): void
     {
         $this->expectException(InvalidArgumentException::class);
@@ -79,9 +79,7 @@ class TextResponseTest extends TestCase
         new TextResponse($body);
     }
 
-    /**
-     * @group 115
-     */
+    #[Group('115')]
     public function testConstructorRewindsBodyStream(): void
     {
         $text     = 'test data';

@@ -9,6 +9,11 @@ use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\Diactoros\ServerRequestFilter\DoNotFilter;
 use Laminas\Diactoros\ServerRequestFilter\FilterServerRequestInterface;
 use Laminas\Diactoros\UploadedFile;
+use PHPUnit\Framework\Attributes\BackupGlobals;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
+use PHPUnit\Framework\Attributes\PreserveGlobalState;
+use PHPUnit\Framework\Attributes\RunInSeparateProcess;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
@@ -19,9 +24,7 @@ use function Laminas\Diactoros\normalizeServer;
 use function Laminas\Diactoros\normalizeUploadedFiles;
 use function str_replace;
 
-/**
- * @backupGlobals enabled
- */
+#[BackupGlobals(true)]
 final class ServerRequestFactoryTest extends TestCase
 {
     public function testReturnsServerValueUnchangedIfHttpAuthorizationHeaderIsPresent(): void
@@ -190,10 +193,8 @@ final class ServerRequestFactoryTest extends TestCase
         $this->assertSame(['foo_bar' => 'baz'], $request->getCookieParams());
     }
 
-    /**
-     * @runInSeparateProcess
-     * @preserveGlobalState
-     */
+    #[PreserveGlobalState(true)]
+    #[RunInSeparateProcess]
     public function testCreateFromGlobalsShouldPreserveKeysWhenCreatedWithAZeroValue(): void
     {
         $_SERVER['HTTP_ACCEPT']    = '0';
@@ -204,10 +205,8 @@ final class ServerRequestFactoryTest extends TestCase
         $this->assertSame('0', $request->getHeaderLine('content-length'));
     }
 
-    /**
-     * @runInSeparateProcess
-     * @preserveGlobalState
-     */
+    #[PreserveGlobalState(true)]
+    #[RunInSeparateProcess]
     public function testCreateFromGlobalsShouldNotPreserveKeysWhenCreatedWithAnEmptyValue(): void
     {
         $_SERVER['HTTP_ACCEPT']    = '';
@@ -219,10 +218,8 @@ final class ServerRequestFactoryTest extends TestCase
         $this->assertFalse($request->hasHeader('content-length'));
     }
 
-    /**
-     * @runInSeparateProcess
-     * @preserveGlobalState disabled
-     */
+    #[PreserveGlobalState(false)]
+    #[RunInSeparateProcess]
     public function testFromGlobalsUsesCookieSuperGlobalWhenCookieHeaderIsNotSet(): void
     {
         $_COOKIE = [
@@ -265,10 +262,10 @@ final class ServerRequestFactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider cookieHeaderValues
      * @param non-empty-string $cookieHeader
      * @param array<non-empty-string, non-empty-string> $expectedCookies
      */
+    #[DataProvider('cookieHeaderValues')]
     public function testCookieHeaderVariations(string $cookieHeader, array $expectedCookies): void
     {
         $_SERVER['HTTP_COOKIE'] = $cookieHeader;
@@ -302,10 +299,8 @@ final class ServerRequestFactoryTest extends TestCase
         $this->assertSame($expected, $server);
     }
 
-    /**
-     * @group 57
-     * @group 56
-     */
+    #[Group('57')]
+    #[Group('56')]
     public function testNormalizeFilesReturnsOnlyActualFilesWhenOriginalFilesContainsNestedAssociativeArrays(): void
     {
         $files = [
@@ -336,10 +331,10 @@ final class ServerRequestFactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider marshalProtocolVersionProvider
      * @param non-empty-string $protocol
      * @param non-empty-string $expected
      */
+    #[DataProvider('marshalProtocolVersionProvider')]
     public function testMarshalProtocolVersionReturnsHttpVersions(string $protocol, string $expected): void
     {
         $version = marshalProtocolVersionFromSapi(['SERVER_PROTOCOL' => $protocol]);
@@ -451,9 +446,9 @@ final class ServerRequestFactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider serverContentMap
      * @psalm-param array<string, string> $server
      */
+    #[DataProvider('serverContentMap')]
     public function testDoesNotMarshalAllContentPrefixedServerVarsAsHeaders(
         array $server,
         string $key,
@@ -540,9 +535,7 @@ final class ServerRequestFactoryTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider invalidHostHeaders
-     */
+    #[DataProvider('invalidHostHeaders')]
     public function testRejectsDuplicatedHostHeader(string $host): void
     {
         $server = [

@@ -8,6 +8,9 @@ use InvalidArgumentException;
 use Laminas\Diactoros\ServerRequest;
 use Laminas\Diactoros\UploadedFile;
 use Laminas\Diactoros\Uri;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Depends;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use ReflectionProperty;
 
@@ -79,9 +82,7 @@ final class ServerRequestTest extends TestCase
         $this->assertEmpty($this->request->getAttribute('does-not-exist'));
     }
 
-    /**
-     * @depends testAttributesAreEmptyByDefault
-     */
+    #[Depends('testAttributesAreEmptyByDefault')]
     public function testAttributeMutatorReturnsCloneWithChanges(): ServerRequest
     {
         $request = $this->request->withAttribute('foo', 'bar');
@@ -90,9 +91,7 @@ final class ServerRequestTest extends TestCase
         return $request;
     }
 
-    /**
-     * @depends testAttributeMutatorReturnsCloneWithChanges
-     */
+    #[Depends('testAttributeMutatorReturnsCloneWithChanges')]
     public function testRemovingAttributeReturnsCloneWithoutAttribute(ServerRequest $request): void
     {
         $new = $request->withoutAttribute('foo');
@@ -111,10 +110,10 @@ final class ServerRequestTest extends TestCase
     }
 
     /**
-     * @dataProvider provideMethods
      * @param non-empty-string|null $parameterMethod
      * @param non-empty-string $methodReturned
      */
+    #[DataProvider('provideMethods')]
     public function testUsesProvidedConstructorArguments(?string $parameterMethod, string $methodReturned): void
     {
         $server = [
@@ -171,9 +170,7 @@ final class ServerRequestTest extends TestCase
         $this->assertSame('php://memory', $stream);
     }
 
-    /**
-     * @group 46
-     */
+    #[Group('46')]
     public function testCookieParamsAreAnEmptyArrayAtInitialization(): void
     {
         $request = new ServerRequest();
@@ -181,9 +178,7 @@ final class ServerRequestTest extends TestCase
         $this->assertCount(0, $request->getCookieParams());
     }
 
-    /**
-     * @group 46
-     */
+    #[Group('46')]
     public function testQueryParamsAreAnEmptyArrayAtInitialization(): void
     {
         $request = new ServerRequest();
@@ -191,9 +186,7 @@ final class ServerRequestTest extends TestCase
         $this->assertCount(0, $request->getQueryParams());
     }
 
-    /**
-     * @group 46
-     */
+    #[Group('46')]
     public function testParsedBodyIsNullAtInitialization(): void
     {
         $request = new ServerRequest();

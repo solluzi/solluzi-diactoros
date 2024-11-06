@@ -7,6 +7,8 @@ namespace LaminasTest\Diactoros\Response;
 use InvalidArgumentException;
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\Response\Serializer;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamInterface;
@@ -109,9 +111,9 @@ final class SerializerTest extends TestCase
     }
 
     /**
-     * @dataProvider headersWithContinuationLines
      * @param non-empty-string $text
      */
+    #[DataProvider('headersWithContinuationLines')]
     public function testCanDeserializeResponseWithHeaderContinuations(string $text): void
     {
         $response = Serializer::fromString($text);
@@ -135,9 +137,7 @@ final class SerializerTest extends TestCase
         ];
     }
 
-    /**
-     * @dataProvider headersWithWhitespace
-     */
+    #[DataProvider('headersWithWhitespace')]
     public function testDeserializationRemovesWhitespaceAroundValues(string $text): void
     {
         $response = Serializer::fromString($text);
@@ -218,10 +218,10 @@ final class SerializerTest extends TestCase
     }
 
     /**
-     * @dataProvider messagesWithInvalidHeaders
      * @param non-empty-string $message
      * @param non-empty-string $exceptionMessage
      */
+    #[DataProvider('messagesWithInvalidHeaders')]
     public function testDeserializationRaisesExceptionForMalformedHeaders(
         string $message,
         string $exceptionMessage
@@ -262,9 +262,7 @@ final class SerializerTest extends TestCase
         Serializer::fromStream($stream);
     }
 
-    /**
-     * @group 113
-     */
+    #[Group('113')]
     public function testDeserializeCorrectlyCastsStatusCodeToInteger(): void
     {
         $response = Response\Serializer::fromString('HTTP/1.0 204');

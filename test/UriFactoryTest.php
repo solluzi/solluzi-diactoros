@@ -6,6 +6,7 @@ namespace LaminasTest\Diactoros;
 
 use Laminas\Diactoros\Uri;
 use Laminas\Diactoros\UriFactory;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
 use function array_shift;
@@ -161,9 +162,9 @@ class UriFactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider httpsParamProvider
      * @param non-empty-string $param
      */
+    #[DataProvider('httpsParamProvider')]
     public function testMarshalUriDetectsHttpsSchemeFromServerValue(string $param): void
     {
         $server  = [
@@ -191,10 +192,10 @@ class UriFactoryTest extends TestCase
     }
 
     /**
-     * @dataProvider httpsDisableParamProvider
      * @param non-empty-string $param
      * @param 'off'|'OFF' $value
      */
+    #[DataProvider('httpsDisableParamProvider')]
     public function testMarshalUriUsesHttpSchemeIfHttpsServerValueEqualsOff(string $param, string $value): void
     {
         $server  = [
