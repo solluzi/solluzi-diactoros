@@ -86,5 +86,7 @@
         "test": "phpunit --colors=always",
         "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
         "static-analysis": "psalm --shepherd --stats"
-    }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }
