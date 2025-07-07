@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
-use Laminas\Diactoros\Uri;
-use Laminas\Diactoros\UriFactory;
+use Solluzi\Diactoros\Uri;
+use Solluzi\Diactoros\UriFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

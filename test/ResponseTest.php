@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
 use DOMDocument;
 use DOMXPath;
 use InvalidArgumentException;
-use Laminas\Diactoros\Response;
-use Laminas\Diactoros\Stream;
+use Solluzi\Diactoros\Response;
+use Solluzi\Diactoros\Stream;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;

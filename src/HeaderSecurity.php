@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros;
+namespace Solluzi\Diactoros;
 
 use function get_debug_type;
 use function in_array;

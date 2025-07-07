@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\ServerRequestFilter;
+namespace Solluzi\Diactoros\ServerRequestFilter;
 
 use function assert;
 use function count;

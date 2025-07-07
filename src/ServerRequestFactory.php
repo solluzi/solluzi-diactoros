@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros;
+namespace Solluzi\Diactoros;
 
-use Laminas\Diactoros\ServerRequestFilter\FilterServerRequestInterface;
-use Laminas\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
+use Solluzi\Diactoros\ServerRequestFilter\FilterServerRequestInterface;
+use Solluzi\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
 use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

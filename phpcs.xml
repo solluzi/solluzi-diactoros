@@ -16,8 +16,8 @@
     <file>src</file>
     <file>test</file>
 
-    <!-- Include all rules from Laminas Coding Standard -->
-    <rule ref="LaminasCodingStandard"/>
+    <!-- Include all rules from Solluzi Coding Standard -->
+    <rule ref="SolluziCodingStandard"/>
     <rule ref="WebimpressCodingStandard.NamingConventions.ValidVariableName.NotCamelCaps">
         <severity>0</severity>
     </rule>

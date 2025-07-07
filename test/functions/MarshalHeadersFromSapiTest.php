@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\functions;
+namespace SolluziTest\Diactoros\functions;
 
 use PHPUnit\Framework\TestCase;
 
-use function Laminas\Diactoros\marshalHeadersFromSapi;
+use function Solluzi\Diactoros\marshalHeadersFromSapi;
 
 class MarshalHeadersFromSapiTest extends TestCase
 {

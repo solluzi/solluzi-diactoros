@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Request;
+namespace SolluziTest\Diactoros\Request;
 
 use InvalidArgumentException;
-use Laminas\Diactoros\RelativeStream;
-use Laminas\Diactoros\Request;
-use Laminas\Diactoros\Request\Serializer;
-use Laminas\Diactoros\Stream;
-use Laminas\Diactoros\Uri;
+use Solluzi\Diactoros\RelativeStream;
+use Solluzi\Diactoros\Request;
+use Solluzi\Diactoros\Request\Serializer;
+use Solluzi\Diactoros\Stream;
+use Solluzi\Diactoros\Uri;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\RequestInterface;

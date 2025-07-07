@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
-use Laminas\Diactoros\RelativeStream;
-use Laminas\Diactoros\Stream;
+use Solluzi\Diactoros\RelativeStream;
+use Solluzi\Diactoros\Stream;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use RuntimeException;

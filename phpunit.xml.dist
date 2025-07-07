@@ -12,7 +12,7 @@
     displayDetailsOnSkippedTests="true"
 >
     <testsuites>
-        <testsuite name="Laminas\\Diactoros Tests">
+        <testsuite name="Solluzi\\Diactoros Tests">
             <directory>./test</directory>
         </testsuite>
         <testsuite name="PSR-17 Integration Tests">
@@ -21,12 +21,12 @@
     </testsuites>
     <php>
         <env name="ALWAYS_REFRESH_IANA_HTTP_STATUS_CODES" value="false"/>
-        <const name="REQUEST_FACTORY" value="Laminas\Diactoros\RequestFactory"/>
-        <const name="RESPONSE_FACTORY" value="Laminas\Diactoros\ResponseFactory"/>
-        <const name="SERVER_REQUEST_FACTORY" value="Laminas\Diactoros\ServerRequestFactory"/>
-        <const name="STREAM_FACTORY" value="Laminas\Diactoros\StreamFactory"/>
-        <const name="UPLOADED_FILE_FACTORY" value="Laminas\Diactoros\UploadedFileFactory"/>
-        <const name="URI_FACTORY" value="Laminas\Diactoros\UriFactory"/>
+        <const name="REQUEST_FACTORY" value="Solluzi\Diactoros\RequestFactory"/>
+        <const name="RESPONSE_FACTORY" value="Solluzi\Diactoros\ResponseFactory"/>
+        <const name="SERVER_REQUEST_FACTORY" value="Solluzi\Diactoros\ServerRequestFactory"/>
+        <const name="STREAM_FACTORY" value="Solluzi\Diactoros\StreamFactory"/>
+        <const name="UPLOADED_FILE_FACTORY" value="Solluzi\Diactoros\UploadedFileFactory"/>
+        <const name="URI_FACTORY" value="Solluzi\Diactoros\UriFactory"/>
     </php>
     <source>
         <include>

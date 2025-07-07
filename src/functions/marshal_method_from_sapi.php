@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros;
+namespace Solluzi\Diactoros;
 
 /**
  * Retrieve the request method from the SAPI parameters.

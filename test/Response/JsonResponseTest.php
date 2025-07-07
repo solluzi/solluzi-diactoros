@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Response;
+namespace SolluziTest\Diactoros\Response;
 
 use InvalidArgumentException;
-use Laminas\Diactoros\Response\JsonResponse;
+use Solluzi\Diactoros\Response\JsonResponse;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use stdClass;

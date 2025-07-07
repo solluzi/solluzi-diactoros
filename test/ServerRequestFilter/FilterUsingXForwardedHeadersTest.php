@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\ServerRequestFilter;
+namespace SolluziTest\Diactoros\ServerRequestFilter;
 
-use Laminas\Diactoros\Exception\InvalidForwardedHeaderNameException;
-use Laminas\Diactoros\Exception\InvalidProxyAddressException;
-use Laminas\Diactoros\ServerRequest;
-use Laminas\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
+use Solluzi\Diactoros\Exception\InvalidForwardedHeaderNameException;
+use Solluzi\Diactoros\Exception\InvalidProxyAddressException;
+use Solluzi\Diactoros\ServerRequest;
+use Solluzi\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

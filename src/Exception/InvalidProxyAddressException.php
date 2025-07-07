@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\Exception;
+namespace Solluzi\Diactoros\Exception;
 
 use function get_debug_type;
 use function sprintf;

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Integration;
+namespace SolluziTest\Diactoros\Integration;
 
 use Http\Psr7Test\UriIntegrationTest;
-use Laminas\Diactoros\Uri;
+use Solluzi\Diactoros\Uri;
 
 final class UriTest extends UriIntegrationTest
 {

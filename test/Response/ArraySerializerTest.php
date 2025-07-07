@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Response;
+namespace SolluziTest\Diactoros\Response;
 
-use Laminas\Diactoros\Response;
-use Laminas\Diactoros\Response\ArraySerializer;
-use Laminas\Diactoros\Stream;
+use Solluzi\Diactoros\Response;
+use Solluzi\Diactoros\Response\ArraySerializer;
+use Solluzi\Diactoros\Stream;
 use PHPUnit\Framework\TestCase;
 use UnexpectedValueException;
 

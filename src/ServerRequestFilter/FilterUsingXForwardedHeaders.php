@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\ServerRequestFilter;
+namespace Solluzi\Diactoros\ServerRequestFilter;
 
-use Laminas\Diactoros\Exception\InvalidForwardedHeaderNameException;
-use Laminas\Diactoros\Exception\InvalidProxyAddressException;
-use Laminas\Diactoros\UriFactory;
+use Solluzi\Diactoros\Exception\InvalidForwardedHeaderNameException;
+use Solluzi\Diactoros\Exception\InvalidProxyAddressException;
+use Solluzi\Diactoros\UriFactory;
 use Psr\Http\Message\ServerRequestInterface;
 
 use function assert;

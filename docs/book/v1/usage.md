@@ -17,14 +17,14 @@ value, as it is a new instance.
 
 ```php
 // Create a request
-$request = (new Laminas\Diactoros\Request())
-    ->withUri(new Laminas\Diactoros\Uri('http://example.com'))
+$request = (new Solluzi\Diactoros\Request())
+    ->withUri(new Solluzi\Diactoros\Uri('http://example.com'))
     ->withMethod('PATCH')
     ->withAddedHeader('Authorization', 'Bearer ' . $token)
     ->withAddedHeader('Content-Type', 'application/json');
 
 // OR:
-$request = new Laminas\Diactoros\Request(
+$request = new Solluzi\Diactoros\Request(
     'http://example.com',
     'PATCH',
     'php://memory',
@@ -52,7 +52,7 @@ foreach ($response->getHeaders() as $header => $values) {
 printf("Message:\n%s\n", $response->getBody());
 ```
 
-(Note: `laminas-diactoros` does NOT ship with a client implementation; the above is just an
+(Note: `Solluzi-diactoros` does NOT ship with a client implementation; the above is just an
 illustration of a possible implementation.)
 
 ## Server-Side Applications
@@ -63,7 +63,7 @@ then populate and send a response.
 ### Marshaling an incoming Request
 
 PHP contains a plethora of information about the incoming request, and keeps that information in a
-variety of locations. `Laminas\Diactoros\ServerRequestFactory::fromGlobals()` can simplify marshaling
+variety of locations. `Solluzi\Diactoros\ServerRequestFactory::fromGlobals()` can simplify marshaling
 that information into a request instance.
 
 You can call the factory method with or without the following arguments, in the following order:
@@ -74,11 +74,11 @@ You can call the factory method with or without the following arguments, in the 
 - `$cookies`, typically `$_COOKIE`
 - `$files`, typically `$_FILES`
 
-The method will then return a `Laminas\Diactoros\ServerRequest` instance. If any argument is omitted,
+The method will then return a `Solluzi\Diactoros\ServerRequest` instance. If any argument is omitted,
 the associated superglobal will be used.
 
 ```php
-$request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
+$request = Solluzi\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
     $_GET,
     $_POST,
@@ -101,7 +101,7 @@ does not create a state change in the response, so it can be done without captur
 value. Manipulating headers does, however.
 
 ```php
-$response = new Laminas\Diactoros\Response();
+$response = new Solluzi\Diactoros\Response();
 
 // Write to the response body:
 $response->getBody()->write("some content\n");
@@ -120,12 +120,12 @@ $response = $response
 
 > ### Deprecated
 >
-> The class `Laminas\Diactoros\Server` is deprecated as of the 1.8.0 release. We
-> recommend using the class `Laminas\HttpHandlerRunner\RequestHandlerRunner` via
-> the package [laminas/laminas-httphandlerrunner](https://docs.laminas.dev/laminas-httphandlerrunner)
+> The class `Solluzi\Diactoros\Server` is deprecated as of the 1.8.0 release. We
+> recommend using the class `Solluzi\HttpHandlerRunner\RequestHandlerRunner` via
+> the package [Solluzi/Solluzi-httphandlerrunner](https://docs.Solluzi.dev/Solluzi-httphandlerrunner)
 > instead.
 
-`Laminas\Diactoros\Server` mimics a portion of the API of node's `http.Server` class. It invokes a
+`Solluzi\Diactoros\Server` mimics a portion of the API of node's `http.Server` class. It invokes a
 callback, passing it an `ServerRequest`, an `Response`, and optionally a callback to use for
 incomplete/unhandled requests.
 
@@ -133,7 +133,7 @@ You can create a server in one of three ways:
 
 ```php
 // Direct instantiation, with a callback handler, request, and response
-$server = new Laminas\Diactoros\Server(
+$server = new Solluzi\Diactoros\Server(
     function ($request, $response, $done) {
         $response->getBody()->write("Hello world!");
     },
@@ -142,7 +142,7 @@ $server = new Laminas\Diactoros\Server(
 );
 
 // Using the createServer factory, providing it with the various superglobals:
-$server = Laminas\Diactoros\Server::createServer(
+$server = Solluzi\Diactoros\Server::createServer(
     function ($request, $response, $done) {
         $response->getBody()->write("Hello world!");
     },
@@ -154,7 +154,7 @@ $server = Laminas\Diactoros\Server::createServer(
 );
 
 // Using the createServerFromRequest factory, and providing it a request:
-$server = Laminas\Diactoros\Server::createServerFromRequest(
+$server = Solluzi\Diactoros\Server::createServerFromRequest(
   function ($request, $response, $done) {
       $response->getBody()->write("Hello world!");
   },

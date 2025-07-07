@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
 use InvalidArgumentException;
-use Laminas\Diactoros\HeaderSecurity;
+use Solluzi\Diactoros\HeaderSecurity;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;

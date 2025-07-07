@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\Exception;
+namespace Solluzi\Diactoros\Exception;
 
-use Laminas\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
+use Solluzi\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders;
 
 use function get_debug_type;
 use function is_string;

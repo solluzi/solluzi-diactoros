@@ -44,9 +44,9 @@ nav:
       - "Emitting Responses": v1/emitting-responses.md
       - Serialization: v1/serialization.md
       - API: v1/api.md
-site_name: laminas-diactoros
+site_name: Solluzi-diactoros
 site_description: "PSR-7 HTTP message implementations"
-repo_url: "https://github.com/laminas/laminas-diactoros"
+repo_url: "https://github.com/Solluzi/Solluzi-diactoros"
 plugins:
   - search
   - redirects:

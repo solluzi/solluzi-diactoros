@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Integration;
+namespace SolluziTest\Diactoros\Integration;
 
 use Http\Psr7Test\UploadedFileIntegrationTest;
-use Laminas\Diactoros\Stream;
-use Laminas\Diactoros\UploadedFile;
+use Solluzi\Diactoros\Stream;
+use Solluzi\Diactoros\UploadedFile;
 
 use const UPLOAD_ERR_OK;
 

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Response;
+namespace SolluziTest\Diactoros\Response;
 
-use Laminas\Diactoros\Response;
-use Laminas\Diactoros\Response\EmptyResponse;
+use Solluzi\Diactoros\Response;
+use Solluzi\Diactoros\Response\EmptyResponse;
 use PHPUnit\Framework\TestCase;
 
 class EmptyResponseTest extends TestCase

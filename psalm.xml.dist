@@ -26,7 +26,7 @@
     <issueHandlers>
         <InternalClass>
             <errorLevel type="suppress">
-                <referencedClass name="Laminas\Diactoros\ServerRequestFilter\IPRange"/>
+                <referencedClass name="Solluzi\Diactoros\ServerRequestFilter\IPRange"/>
             </errorLevel>
         </InternalClass>
 
@@ -35,9 +35,9 @@
                 <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::method"/>
                 <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::willReturn"/>
                 <referencedMethod name="PHPUnit\Framework\MockObject\Builder\InvocationMocker::with"/>
-                <referencedMethod name="Laminas\Diactoros\ServerRequestFilter\IPRange::matches"/>
-                <referencedMethod name="Laminas\Diactoros\ServerRequestFilter\IPRange::matchesIPv4"/>
-                <referencedMethod name="Laminas\Diactoros\ServerRequestFilter\IPRange::matchesIPv6"/>
+                <referencedMethod name="Solluzi\Diactoros\ServerRequestFilter\IPRange::matches"/>
+                <referencedMethod name="Solluzi\Diactoros\ServerRequestFilter\IPRange::matchesIPv4"/>
+                <referencedMethod name="Solluzi\Diactoros\ServerRequestFilter\IPRange::matchesIPv6"/>
             </errorLevel>
         </InternalMethod>
     </issueHandlers>

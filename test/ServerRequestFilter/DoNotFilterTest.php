@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\ServerRequestFilter;
+namespace SolluziTest\Diactoros\ServerRequestFilter;
 
-use Laminas\Diactoros\ServerRequest;
-use Laminas\Diactoros\ServerRequestFilter\DoNotFilter;
+use Solluzi\Diactoros\ServerRequest;
+use Solluzi\Diactoros\ServerRequestFilter\DoNotFilter;
 use PHPUnit\Framework\TestCase;
 
 class DoNotFilterTest extends TestCase

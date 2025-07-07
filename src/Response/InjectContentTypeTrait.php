@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\Response;
+namespace Solluzi\Diactoros\Response;
 
 use function array_keys;
 use function array_reduce;

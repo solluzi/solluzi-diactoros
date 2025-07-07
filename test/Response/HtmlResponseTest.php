@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Response;
+namespace SolluziTest\Diactoros\Response;
 
 use InvalidArgumentException;
-use Laminas\Diactoros\Response\HtmlResponse;
+use Solluzi\Diactoros\Response\HtmlResponse;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\StreamInterface;
