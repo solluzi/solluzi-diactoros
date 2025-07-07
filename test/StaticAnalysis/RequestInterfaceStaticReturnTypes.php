@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\StaticAnalysis;
+namespace SolluziTest\Diactoros\StaticAnalysis;
 
-use Laminas\Diactoros\Request;
-use Laminas\Diactoros\ServerRequest;
-use Laminas\Diactoros\Uri;
+use Solluzi\Diactoros\Request;
+use Solluzi\Diactoros\ServerRequest;
+use Solluzi\Diactoros\Uri;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\ServerRequestInterface;
 

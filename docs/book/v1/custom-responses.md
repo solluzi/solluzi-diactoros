@@ -25,7 +25,7 @@ common tasks.
 
 ## Text Responses
 
-`Laminas\Diactoros\Response\TextResponse` creates a plain text response. It sets the
+`Solluzi\Diactoros\Response\TextResponse` creates a plain text response. It sets the
 `Content-Type` header to `text/plain` by default:
 
 ```php
@@ -40,7 +40,7 @@ $response = new TextResponse($text, 200, ['Content-Type' => ['text/csv']]);
 
 ## HTML Responses
 
-`Laminas\Diactoros\Response\HtmlResponse` allows specifying HTML as a payload, and sets the
+`Solluzi\Diactoros\Response\HtmlResponse` allows specifying HTML as a payload, and sets the
 `Content-Type` header to `text/html` by default:
 
 ```php
@@ -62,7 +62,7 @@ Headers must be in the same format as you would provide to the
 
 > Available since version 1.7.0
 
-`Laminas\Diactoros\Response\XmlResponse` allows specifying XML as a payload, and sets the
+`Solluzi\Diactoros\Response\XmlResponse` allows specifying XML as a payload, and sets the
 `Content-Type` header to `application/xml` by default:
 
 ```php
@@ -82,7 +82,7 @@ Headers must be in the same format as you would provide to the
 
 ## JSON Responses
 
-`Laminas\Diactoros\Response\JsonResponse` accepts a data structure to convert to JSON, and sets
+`Solluzi\Diactoros\Response\JsonResponse` accepts a data structure to convert to JSON, and sets
 the `Content-Type` header to `application/json`:
 
 ```php
@@ -125,7 +125,7 @@ Many API actions allow returning empty responses:
 - `204 No Content` responses are, by definition, empty, and often used as a success response when
   deleting an entity.
 
-`Laminas\Diactoros\Response\EmptyResponse` is a `Laminas\Diactoros\Response` extension that, by default,
+`Solluzi\Diactoros\Response\EmptyResponse` is a `Solluzi\Diactoros\Response` extension that, by default,
 returns an empty response with a 204 status. Its constructor allows passing the status and headers
 only:
 
@@ -154,7 +154,7 @@ $response = ( new EmptyResponse(201) )->withHeader('Location', $url);
 
 ## Redirects
 
-`Laminas\Diactoros\Response\RedirectResponse` is a `Laminas\Diactoros\Response` extension for producing
+`Solluzi\Diactoros\Response\RedirectResponse` is a `Solluzi\Diactoros\Response` extension for producing
 redirect responses. The only required argument is a URI, which may be provided as either a string or
 `Psr\Http\Message\UriInterface` instance. By default, the status 302 is used, and no other headers
 are produced; you may alter these via the additional optional arguments:

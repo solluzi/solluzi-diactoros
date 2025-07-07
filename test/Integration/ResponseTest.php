@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Integration;
+namespace SolluziTest\Diactoros\Integration;
 
 use Http\Psr7Test\ResponseIntegrationTest;
-use Laminas\Diactoros\Response;
+use Solluzi\Diactoros\Response;
 
 final class ResponseTest extends ResponseIntegrationTest
 {

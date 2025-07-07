@@ -2,7 +2,7 @@
 
 ## Request Message
 
-`Laminas\Diactoros\Request` implements [`Psr\Http\Message\RequestInterface`](https://github.com/php-fig/http-message/blob/master/src/RequestInterface.php),
+`Solluzi\Diactoros\Request` implements [`Psr\Http\Message\RequestInterface`](https://github.com/php-fig/http-message/blob/master/src/RequestInterface.php),
 and is intended for client-side requests. It includes the following methods:
 
 ```php
@@ -24,7 +24,7 @@ Requests are immutable. Any methods that would change state &mdash; those prefix
 
 ## ServerRequest Message
 
-For server-side applications, `Laminas\Diactoros\ServerRequest` implements
+For server-side applications, `Solluzi\Diactoros\ServerRequest` implements
 [`Psr\Http\Message\ServerRequestInterface`](https://github.com/php-fig/http-message/blob/master/src/ServerRequestInterface.php),
 which provides access to the elements of an HTTP request, as well as uniform access to the various
 elements of incoming data. The methods included are:
@@ -52,7 +52,7 @@ for other values.
 
 ## Response Message
 
-`Laminas\Diactoros\Response` provides an implementation of
+`Solluzi\Diactoros\Response` provides an implementation of
 [`Psr\Http\Message\ResponseInterface`](https://github.com/php-fig/http-message/blob/master/src/ResponseInterface.php),
 an object to be used to aggregate response information for both HTTP clients and server-side
 applications, including headers and message body content. It includes the following:
@@ -76,7 +76,7 @@ Like the `Request` and `ServerRequest`, responses are immutable. Any methods tha
 ### HtmlResponse and JsonResponse
 
 The most common use case in server-side applications for generating responses is to provide a string
-to use for the response, typically HTML or data to serialize as JSON.  `Laminas\Diactoros\Response\HtmlResponse` and `Laminas\Diactoros\Response\JsonResponse` exist to facilitate these use cases:
+to use for the response, typically HTML or data to serialize as JSON.  `Solluzi\Diactoros\Response\HtmlResponse` and `Solluzi\Diactoros\Response\JsonResponse` exist to facilitate these use cases:
 
 ```php
 $htmlResponse = new HtmlResponse($html);
@@ -105,7 +105,7 @@ $jsonResponse = new JsonResponse($data, 422, [
 ## ServerRequestFactory
 
 This static class can be used to marshal a `ServerRequest` instance from the PHP environment.
-The primary entry point is `Laminas\Diactoros\ServerRequestFactory::fromGlobals(array $server, array $query, array $body, array $cookies, array $files, ?Laminas\Diactoros\ServerRequestFilter\FilterServerRequestInterface $requestFilter)`.
+The primary entry point is `Solluzi\Diactoros\ServerRequestFactory::fromGlobals(array $server, array $query, array $body, array $cookies, array $files, ?Solluzi\Diactoros\ServerRequestFilter\FilterServerRequestInterface $requestFilter)`.
 This method will create a new `ServerRequest` instance with the data provided.
 Examples of usage are:
 
@@ -129,8 +129,8 @@ $request = ServerRequestFactory::fromGlobals(
 ### Request Filters
 
 Since version 2.11.1, this method takes the additional optional argument `$requestFilter`.
-This should be a `null` value, or an instance of [`Laminas\Diactoros\ServerRequestFilter\FilterServerRequestInterface`](server-request-filters.md).
-For version 2 releases, if a `null` is provided, internally the method will assign a [`Laminas\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders`](server-request-filters.md#filterusingxforwardedheaders) instance configured as follows:
+This should be a `null` value, or an instance of [`Solluzi\Diactoros\ServerRequestFilter\FilterServerRequestInterface`](server-request-filters.md).
+For version 2 releases, if a `null` is provided, internally the method will assign a [`Solluzi\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders`](server-request-filters.md#filterusingxforwardedheaders) instance configured as follows:
 
 ```php
 $requestFilter = $requestFilter ?: FilterUsingXForwardedHeaders::trustReservedSubnets();
@@ -138,26 +138,26 @@ $requestFilter = $requestFilter ?: FilterUsingXForwardedHeaders::trustReservedSu
 
 The request filter is called on the generated server request instance, and its result is returned from `fromGlobals()`.
 
-**For version 3 releases, this method will switch to using a `Laminas\Diactoros\ServerRequestFilter\DoNotFilter` by default.**
+**For version 3 releases, this method will switch to using a `Solluzi\Diactoros\ServerRequestFilter\DoNotFilter` by default.**
 If you are using this factory method directly, please be aware and update your code accordingly.
 
 ### ServerRequestFactory Helper Functions
 
 In order to create the various artifacts required by a `ServerRequest` instance,
-Diactoros also provides a number of functions under the `Laminas\Diactoros`
+Diactoros also provides a number of functions under the `Solluzi\Diactoros`
 namespace for introspecting the SAPI `$_SERVER` parameters, headers, `$_FILES`,
 and even the `Cookie` header. These include:
 
-- `Laminas\Diactoros\normalizeServer(array $server, callable $apacheRequestHeaderCallback = null) : array`
+- `Solluzi\Diactoros\normalizeServer(array $server, callable $apacheRequestHeaderCallback = null) : array`
   (its main purpose is to aggregate the `Authorization` header in the SAPI params
   when under Apache)
-- `Laminas\Diactoros\marshalProtocolVersionFromSapi(array $server) : string`
-- `Laminas\Diactoros\marshalMethodFromSapi(array $server) : string`.
-- `Laminas\Diactoros\marshalHeadersFromSapi(array $server) : array`
-- `Laminas\Diactoros\parseCookieHeader(string $header) : array`
-- `Laminas\Diactoros\createUploadedFile(array $spec) : UploadedFile` (creates the
+- `Solluzi\Diactoros\marshalProtocolVersionFromSapi(array $server) : string`
+- `Solluzi\Diactoros\marshalMethodFromSapi(array $server) : string`.
+- `Solluzi\Diactoros\marshalHeadersFromSapi(array $server) : array`
+- `Solluzi\Diactoros\parseCookieHeader(string $header) : array`
+- `Solluzi\Diactoros\createUploadedFile(array $spec) : UploadedFile` (creates the
   instance from a normal `$_FILES` entry)
-- `Laminas\Diactoros\normalizeUploadedFiles(array $files) : UploadedFileInterface[]`
+- `Solluzi\Diactoros\normalizeUploadedFiles(array $files) : UploadedFileInterface[]`
   (traverses a potentially nested array of uploaded file instances and/or
   `$_FILES` entries, including those aggregated under mod_php, php-fpm, and
   php-cgi in order to create a flat array of `UploadedFileInterface` instances
@@ -165,7 +165,7 @@ and even the `Cookie` header. These include:
 
 ## URI
 
-`Laminas\Diactoros\Uri` is an implementation of
+`Solluzi\Diactoros\Uri` is an implementation of
 [`Psr\Http\Message\UriInterface`](https://github.com/php-fig/http-message/blob/master/src/UriInterface.php),
 and models and validates URIs. It implements `__toString()`, allowing it to be represented as a
 string and `echo()`'d directly. The following methods are pertinent:
@@ -185,7 +185,7 @@ prefixed with `with` and `without` &mdash; all return a new instance with the ch
 
 ## Stream
 
-`Laminas\Diactoros\Stream` is an implementation of
+`Solluzi\Diactoros\Stream` is an implementation of
 [`Psr\Http\Message\StreamInterface`](https://github.com/php-fig/http-message/blob/master/src/StreamInterface.php),
 and provides a number of facilities around manipulating the composed PHP stream resource. The
 constructor accepts a stream, which may be one of:
@@ -203,7 +203,7 @@ In most cases, you will not interact with the Stream object directly.
 
 ## UploadedFile
 
-`Laminas\Diactoros\UploadedFile` is an implementation of
+`Solluzi\Diactoros\UploadedFile` is an implementation of
 [`Psr\Http\Message\UploadedFileInterface`](https://github.com/php-fig/http-message/blob/master/src/UploadedFileInterface.php),
 and provides abstraction around a single uploaded file, including behavior for interacting with it
 as a stream or moving it to a filesystem location.

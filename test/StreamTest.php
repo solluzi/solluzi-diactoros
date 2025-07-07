@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
 use CurlHandle;
 use GdImage;
 use InvalidArgumentException;
-use Laminas\Diactoros\Exception\InvalidArgumentException as DiactorosInvalidArgumentException;
-use Laminas\Diactoros\Stream;
+use Solluzi\Diactoros\Exception\InvalidArgumentException as DiactorosInvalidArgumentException;
+use Solluzi\Diactoros\Stream;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;

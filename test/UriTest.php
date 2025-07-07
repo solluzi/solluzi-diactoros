@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
 use InvalidArgumentException;
-use Laminas\Diactoros\Uri;
+use Solluzi\Diactoros\Uri;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;
@@ -65,10 +65,10 @@ class UriTest extends TestCase
     public function testWithUserInfoReturnsNewInstanceWithProvidedUserAndPassword(): void
     {
         $uri = new Uri('https://user:pass@local.example.com:3001/foo?bar=baz#quz');
-        $new = $uri->withUserInfo('matthew', 'laminas');
+        $new = $uri->withUserInfo('matthew', 'Solluzi');
         $this->assertNotSame($uri, $new);
-        $this->assertSame('matthew:laminas', $new->getUserInfo());
-        $this->assertSame('https://matthew:laminas@local.example.com:3001/foo?bar=baz#quz', (string) $new);
+        $this->assertSame('matthew:Solluzi', $new->getUserInfo());
+        $this->assertSame('https://matthew:Solluzi@local.example.com:3001/foo?bar=baz#quz', (string) $new);
     }
 
     public function testWithUserInfoReturnsSameInstanceIfUserAndPasswordAreSameAsBefore(): void

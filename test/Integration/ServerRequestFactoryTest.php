@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Integration;
+namespace SolluziTest\Diactoros\Integration;
 
 use Http\Psr7Test\ServerRequestIntegrationTest;
-use Laminas\Diactoros\ServerRequestFactory;
+use Solluzi\Diactoros\ServerRequestFactory;
 use Psr\Http\Message\ServerRequestInterface;
 
 final class ServerRequestFactoryTest extends ServerRequestIntegrationTest

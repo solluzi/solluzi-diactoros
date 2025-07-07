@@ -8,4 +8,4 @@ on:
 
 jobs:
   ci:
-    uses: laminas/workflow-continuous-integration/.github/workflows/continuous-integration.yml@1.x
+    uses: Solluzi/workflow-continuous-integration/.github/workflows/continuous-integration.yml@1.x

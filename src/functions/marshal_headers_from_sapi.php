@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros;
+namespace Solluzi\Diactoros;
 
 use function array_filter;
 use function array_key_exists;
@@ -20,7 +20,7 @@ use const ARRAY_FILTER_USE_KEY;
  */
 function marshalHeadersFromSapi(array $server): array
 {
-    $contentHeaderLookup = isset($server['LAMINAS_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP'])
+    $contentHeaderLookup = isset($server['Solluzi_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP'])
         ? static function (string $key): bool {
             static $contentHeaders = [
                 'CONTENT_TYPE'   => true,

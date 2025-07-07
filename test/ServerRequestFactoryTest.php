@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
-use Laminas\Diactoros\ServerRequest;
-use Laminas\Diactoros\ServerRequestFactory;
-use Laminas\Diactoros\ServerRequestFilter\DoNotFilter;
-use Laminas\Diactoros\ServerRequestFilter\FilterServerRequestInterface;
-use Laminas\Diactoros\UploadedFile;
+use Solluzi\Diactoros\ServerRequest;
+use Solluzi\Diactoros\ServerRequestFactory;
+use Solluzi\Diactoros\ServerRequestFilter\DoNotFilter;
+use Solluzi\Diactoros\ServerRequestFilter\FilterServerRequestInterface;
+use Solluzi\Diactoros\UploadedFile;
 use PHPUnit\Framework\Attributes\BackupGlobals;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
@@ -18,10 +18,10 @@ use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 use UnexpectedValueException;
 
-use function Laminas\Diactoros\marshalHeadersFromSapi;
-use function Laminas\Diactoros\marshalProtocolVersionFromSapi;
-use function Laminas\Diactoros\normalizeServer;
-use function Laminas\Diactoros\normalizeUploadedFiles;
+use function Solluzi\Diactoros\marshalHeadersFromSapi;
+use function Solluzi\Diactoros\marshalProtocolVersionFromSapi;
+use function Solluzi\Diactoros\normalizeServer;
+use function Solluzi\Diactoros\normalizeUploadedFiles;
 use function str_replace;
 
 #[BackupGlobals(true)]
@@ -426,7 +426,7 @@ final class ServerRequestFactoryTest extends TestCase
             [
                 'HTTP_CONTENT_API_PASSWORD'                      => 'password from header',
                 'CONTENT_API_PASSWORD'                           => 'password from env',
-                'LAMINAS_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP' => 'true',
+                'Solluzi_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP' => 'true',
             ],
             'CONTENT_API_PASSWORD',
             'password from header',
@@ -436,7 +436,7 @@ final class ServerRequestFactoryTest extends TestCase
         yield 'env-value-first-strict-content-headers' => [
             [
                 'CONTENT_API_PASSWORD'                           => 'password from env',
-                'LAMINAS_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP' => 'true',
+                'Solluzi_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP' => 'true',
                 'HTTP_CONTENT_API_PASSWORD'                      => 'password from header',
             ],
             'CONTENT_API_PASSWORD',

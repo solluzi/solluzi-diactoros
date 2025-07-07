@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\Request;
+namespace Solluzi\Diactoros\Request;
 
-use Laminas\Diactoros\Exception;
-use Laminas\Diactoros\Request;
-use Laminas\Diactoros\Stream;
+use Solluzi\Diactoros\Exception;
+use Solluzi\Diactoros\Request;
+use Solluzi\Diactoros\Stream;
 use Psr\Http\Message\RequestInterface;
 use Throwable;
 

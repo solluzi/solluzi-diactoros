@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\Response;
+namespace Solluzi\Diactoros\Response;
 
-use Laminas\Diactoros\Exception;
-use Laminas\Diactoros\Response;
-use Laminas\Diactoros\Stream;
+use Solluzi\Diactoros\Exception;
+use Solluzi\Diactoros\Response;
+use Solluzi\Diactoros\Stream;
 use Psr\Http\Message\StreamInterface;
 
 use function get_debug_type;

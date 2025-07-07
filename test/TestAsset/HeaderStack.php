@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\TestAsset;
+namespace SolluziTest\Diactoros\TestAsset;
 
 /**
  * Store output artifacts

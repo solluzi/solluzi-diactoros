@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Request;
+namespace SolluziTest\Diactoros\Request;
 
-use Laminas\Diactoros\Request;
-use Laminas\Diactoros\Request\ArraySerializer;
-use Laminas\Diactoros\Stream;
-use Laminas\Diactoros\Uri;
+use Solluzi\Diactoros\Request;
+use Solluzi\Diactoros\Request\ArraySerializer;
+use Solluzi\Diactoros\Stream;
+use Solluzi\Diactoros\Uri;
 use PHPUnit\Framework\TestCase;
 use UnexpectedValueException;
 

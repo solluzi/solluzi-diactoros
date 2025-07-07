@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros;
+namespace Solluzi\Diactoros;
 
 use Psr\Http\Message\RequestFactoryInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
@@ -13,13 +13,13 @@ use Psr\Http\Message\UriFactoryInterface;
 
 class ConfigProvider
 {
-    public const CONFIG_KEY                  = 'laminas-diactoros';
+    public const CONFIG_KEY                  = 'Solluzi-diactoros';
     public const X_FORWARDED                 = 'x-forwarded-request-filter';
     public const X_FORWARDED_TRUSTED_PROXIES = 'trusted-proxies';
     public const X_FORWARDED_TRUSTED_HEADERS = 'trusted-headers';
 
     /**
-     * Retrieve configuration for laminas-diactoros.
+     * Retrieve configuration for Solluzi-diactoros.
      */
     public function __invoke(): array
     {

@@ -3,7 +3,7 @@
 INFO: **New Feature**
 Available since version 2.11.1
 
-Server request filters allow you to modify the initial state of a generated `ServerRequest` instance as returned from `Laminas\Diactoros\ServerRequestFactory::fromGlobals()`.
+Server request filters allow you to modify the initial state of a generated `ServerRequest` instance as returned from `Solluzi\Diactoros\ServerRequestFactory::fromGlobals()`.
 Common use cases include:
 
 - Generating and injecting a request ID.
@@ -11,10 +11,10 @@ Common use cases include:
 
 ## FilterServerRequestInterface
 
-A request filter implements `Laminas\Diactoros\ServerRequestFilter\FilterServerRequestInterface`:
+A request filter implements `Solluzi\Diactoros\ServerRequestFilter\FilterServerRequestInterface`:
 
 ```php
-namespace Laminas\Diactoros\ServerRequestFilter;
+namespace Solluzi\Diactoros\ServerRequestFilter;
 
 use Psr\Http\Message\ServerRequestInterface;
 
@@ -45,7 +45,7 @@ These include:
 - `X-Forwarded-Port`: the original port included in the `Host` header value.
 - `X-Forwarded-Proto`: the original URI scheme used to make the request (e.g., "http" or "https").
 
-`Laminas\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders` provides named constructors for choosing whether to never trust proxies, always trust proxies, or choose wich proxies and/or headers to trust in order to modify the URI composed in the request instance to match the original request.
+`Solluzi\Diactoros\ServerRequestFilter\FilterUsingXForwardedHeaders` provides named constructors for choosing whether to never trust proxies, always trust proxies, or choose wich proxies and/or headers to trust in order to modify the URI composed in the request instance to match the original request.
 These named constructors are:
 
 - `FilterUsingXForwardedHeadersFactory::trustProxies(string[] $proxyCIDRList, string[] $trustedHeaders = FilterUsingXForwardedHeaders::X_FORWARDED_HEADERS): void`: when this method is called, only requests originating from the trusted proxy/ies will be considered, as well as only the headers specified.

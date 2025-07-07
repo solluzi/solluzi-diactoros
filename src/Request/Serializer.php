@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\Request;
+namespace Solluzi\Diactoros\Request;
 
-use Laminas\Diactoros\AbstractSerializer;
-use Laminas\Diactoros\Exception;
-use Laminas\Diactoros\Request;
-use Laminas\Diactoros\Stream;
-use Laminas\Diactoros\Uri;
+use Solluzi\Diactoros\AbstractSerializer;
+use Solluzi\Diactoros\Exception;
+use Solluzi\Diactoros\Request;
+use Solluzi\Diactoros\Stream;
+use Solluzi\Diactoros\Uri;
 use Psr\Http\Message\RequestInterface;
 use Psr\Http\Message\StreamInterface;
 

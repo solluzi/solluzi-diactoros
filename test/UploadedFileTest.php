@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
 use InvalidArgumentException;
-use Laminas\Diactoros\Stream;
-use Laminas\Diactoros\UploadedFile;
+use Solluzi\Diactoros\Stream;
+use Solluzi\Diactoros\UploadedFile;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Group;
 use PHPUnit\Framework\TestCase;

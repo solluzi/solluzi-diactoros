@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\UploadedFileInterface;
 
-use function Laminas\Diactoros\normalizeUploadedFiles;
+use function Solluzi\Diactoros\normalizeUploadedFiles;
 
 class NormalizeUploadedFilesTest extends TestCase
 {

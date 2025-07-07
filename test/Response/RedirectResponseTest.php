@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\Response;
+namespace SolluziTest\Diactoros\Response;
 
 use InvalidArgumentException;
-use Laminas\Diactoros\Response\RedirectResponse;
-use Laminas\Diactoros\Uri;
+use Solluzi\Diactoros\Response\RedirectResponse;
+use Solluzi\Diactoros\Uri;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

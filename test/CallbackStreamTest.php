@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros;
+namespace SolluziTest\Diactoros;
 
-use Laminas\Diactoros\CallbackStream;
+use Solluzi\Diactoros\CallbackStream;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
@@ -170,8 +170,8 @@ final class CallbackStreamTest extends TestCase
     }
 
     /**
-     * @link \LaminasTest\Diactoros\TestAsset\CallbacksForCallbackStream::sampleStaticCallback()
-     * @link \LaminasTest\Diactoros\TestAsset\CallbacksForCallbackStream::sampleCallback()
+     * @link \SolluziTest\Diactoros\TestAsset\CallbacksForCallbackStream::sampleStaticCallback()
+     * @link \SolluziTest\Diactoros\TestAsset\CallbacksForCallbackStream::sampleCallback()
      *
      * @return non-empty-array<non-empty-string, array{callable(): string, non-empty-string}>
      */

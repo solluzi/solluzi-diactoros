@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace LaminasTest\Diactoros\ServerRequestFilter;
+namespace SolluziTest\Diactoros\ServerRequestFilter;
 
-use Laminas\Diactoros\ServerRequestFilter\IPRange;
+use Solluzi\Diactoros\ServerRequestFilter\IPRange;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 

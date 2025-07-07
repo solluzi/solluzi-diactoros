@@ -17,14 +17,14 @@ value, as it is a new instance.
 
 ```php
 // Create a request
-$request = (new Laminas\Diactoros\Request())
-    ->withUri(new Laminas\Diactoros\Uri('http://example.com'))
+$request = (new Solluzi\Diactoros\Request())
+    ->withUri(new Solluzi\Diactoros\Uri('http://example.com'))
     ->withMethod('PATCH')
     ->withAddedHeader('Authorization', 'Bearer ' . $token)
     ->withAddedHeader('Content-Type', 'application/json');
 
 // OR:
-$request = new Laminas\Diactoros\Request(
+$request = new Solluzi\Diactoros\Request(
     'http://example.com',
     'PATCH',
     'php://memory',
@@ -52,7 +52,7 @@ foreach ($response->getHeaders() as $header => $values) {
 printf("Message:\n%s\n", $response->getBody());
 ```
 
-(Note: `laminas-diactoros` does NOT ship with a client implementation; the above is just an
+(Note: `Solluzi-diactoros` does NOT ship with a client implementation; the above is just an
 illustration of a possible implementation.)
 
 ## Server-Side Applications
@@ -63,7 +63,7 @@ then populate and send a response.
 ### Marshaling an incoming Request
 
 PHP contains a plethora of information about the incoming request, and keeps that information in a
-variety of locations. `Laminas\Diactoros\ServerRequestFactory::fromGlobals()` can simplify marshaling
+variety of locations. `Solluzi\Diactoros\ServerRequestFactory::fromGlobals()` can simplify marshaling
 that information into a request instance.
 
 You can call the factory method with or without the following arguments, in the following order:
@@ -74,11 +74,11 @@ You can call the factory method with or without the following arguments, in the 
 - `$cookies`, typically `$_COOKIE`
 - `$files`, typically `$_FILES`
 
-The method will then return a `Laminas\Diactoros\ServerRequest` instance. If any argument is omitted,
+The method will then return a `Solluzi\Diactoros\ServerRequest` instance. If any argument is omitted,
 the associated superglobal will be used.
 
 ```php
-$request = Laminas\Diactoros\ServerRequestFactory::fromGlobals(
+$request = Solluzi\Diactoros\ServerRequestFactory::fromGlobals(
     $_SERVER,
     $_GET,
     $_POST,
@@ -103,12 +103,12 @@ agent.
 > Since changing the existing behavior may break some applications, we will not make the functionality more restrictive before version 3.0.0.
 > If you are running into issues whereby you have ENV variables that are being munged into request headers, you can define the following ENV variable in your application to enable the more strict behavior:
 >
-> - LAMINAS_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP
+> - Solluzi_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP
 >
 > As an example, you could define it in your application's `.env` file if you are using [vlucas/phpdotenv](https://github.com/vlucas/phpdotenv):
 >
 > ```env
-> LAMINAS_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP=true
+> Solluzi_DIACTOROS_STRICT_CONTENT_HEADER_LOOKUP=true
 > ```
 >
 > Alternately, you could define it as a php-fpm or Apache environment variable.
@@ -122,7 +122,7 @@ does not create a state change in the response, so it can be done without captur
 value. Manipulating headers does, however.
 
 ```php
-$response = new Laminas\Diactoros\Response();
+$response = new Solluzi\Diactoros\Response();
 
 // Write to the response body:
 $response->getBody()->write("some content\n");

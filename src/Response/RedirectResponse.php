@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Laminas\Diactoros\Response;
+namespace Solluzi\Diactoros\Response;
 
-use Laminas\Diactoros\Exception;
-use Laminas\Diactoros\Response;
+use Solluzi\Diactoros\Exception;
+use Solluzi\Diactoros\Response;
 use Psr\Http\Message\UriInterface;
 
 use function get_debug_type;
